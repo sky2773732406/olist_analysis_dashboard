@@ -386,64 +386,52 @@ GROUP BY
 ORDER BY 
 	review_score;
 
+-- Top10 卖家（按 GMV）
+SELECT
+  oi.seller_id,
+  s.seller_state,
+  COUNT(DISTINCT oi.order_id) AS orders,
+  ROUND(SUM(oi.price + oi.freight_value), 2) AS gmv
+FROM 
+order_items oi
+JOIN 
+	orders AS o  
+ON 
+	oi.order_id = o.order_id
+JOIN 
+	sellers AS s 
+ON 
+	oi.seller_id = s.seller_id
+WHERE 
+	o.order_status = 'delivered'
+GROUP BY 
+	oi.seller_id, s.seller_state
+ORDER BY 
+	gmv DESC
+LIMIT 10;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- 月度新增客户（按首次送达订单月份）
+WITH first_order AS (
+  SELECT 
+		c.customer_unique_id,
+		MIN(o.order_purchase_timestamp) AS first_purchase
+  FROM 
+		orders AS o
+  JOIN 
+		customers AS c 
+	ON 
+		o.customer_id = c.customer_id
+  WHERE 
+		o.order_status = 'delivered'
+  GROUP BY 
+		c.customer_unique_id
+)
+SELECT
+  DATE_FORMAT(first_purchase, '%Y-%m') AS month,
+  COUNT(*) AS new_customers
+FROM 
+	first_order
+GROUP BY 
+	month
+ORDER BY 
+	month;
