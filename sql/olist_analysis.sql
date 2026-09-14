@@ -359,14 +359,32 @@ ON
 GROUP BY 
 	o.delivery_status;
 
-
-
-
-
-
-
-
-
+-- 支付方式分布
+SELECT
+  payment_type,
+  COUNT(DISTINCT order_id) AS orders,
+  ROUND(SUM(payment_value), 2) AS payment_value,
+  ROUND(SUM(payment_value)
+        / (SELECT SUM(payment_value) FROM order_payments) * 100, 2) AS share_pct,
+  ROUND(AVG(payment_installments), 2) AS avg_installments
+FROM 
+	order_payments
+GROUP BY 
+	payment_type
+ORDER BY 
+	payment_value DESC;
+	
+-- 评价分布
+SELECT
+  review_score,
+  COUNT(*) AS reviews,
+  ROUND(COUNT(*) / (SELECT COUNT(*) FROM order_reviews) * 100, 2) AS share_pct
+FROM 
+	order_reviews
+GROUP BY 
+	review_score
+ORDER BY 
+	review_score;
 
 
 
