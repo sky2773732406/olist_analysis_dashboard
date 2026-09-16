@@ -39,8 +39,6 @@
 olist-data-analysis/
 ├─ README.md
 ├─ .gitignore
-├─ data/
-│  └─ README.md
 ├─ excel/
 │  └─ olist_cleaning_pivot.xlsx
 ├─ sql/
@@ -50,14 +48,15 @@ olist-data-analysis/
 ├─ report/
 │  └─ analysis_report.md
 └─ images/
-   └─ dashboard.png
+   ├─ dashboard.png
+   └─ olist_dashboard.pdf
 ```
 
 ## 复现步骤
 
 ### 1. 数据准备
 
-将原始 CSV 放入 `data/` 本地目录。大文件不提交到 Git，只提交 `data/README.md` 说明数据来源。
+将原始 CSV 放入本地 `archive/` 目录（Kaggle 下载解压后的默认名，已在 `.gitignore` 忽略）。大文件不提交到 Git。
 
 ### 2. Excel 清洗与透视
 
@@ -131,13 +130,16 @@ olist-data-analysis/
 
 ## 核心结论
 
-待分析完成后补充，例如：
+基于 Olist 已送达订单（96,478 单，总 GMV R$15,419,773.75）的实际计算：
 
-- 月度 GMV 趋势
-- Top10 品类贡献占比
-- 复购率
-- 配送天数与评分关系
-- 主要支付方式
+- **销售趋势**：GMV 稳步上升，2017-11 达峰值 R$1,153,364.20（环比 +53.55%）；2018 年月均稳定在 R$100 万以上。
+- **品类贡献**：Top10 品类贡献 **62.38%** GMV，18 个品类覆盖 80%，符合帕累托法则。头部为 health_beauty、watches_gifts、bed_bath_table。
+- **地区表现**：**SP 州销售最高**，占 37.42%；SP + RJ + MG 合计 62.55%。
+- **用户复购**：复购率仅 **3.0%**（93,358 名客户中 2,801 人复购），平台以拉新驱动为主。
+- **配送与评分**：配送天数越长评分越低，相关系数 **-0.334**；>30 天平均仅 2.20 分，延迟订单差评率 53.99%。
+- **支付方式**：信用卡占金额 **78.34%**，boleto 17.92%。
+
+完整分析见 [report/analysis_report.md](report/analysis_report.md)。
 
 ## Git 提交规范
 
