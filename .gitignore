@@ -4,10 +4,8 @@
 # ---- 中间过程文件（只提交交付成品，其余留本地）----
 excel/olist_cleaning.xlsx
 
-# ---- 原始数据大文件（只保留 data/README.md 说明数据来源）----
-# 原始 CSV/ZIP 放入 data/ 或 archive/ 本地目录但不提交
-data/*
-!data/README.md
+# ---- 原始数据大文件（本地，不入库）----
+# 原始 CSV/ZIP 放入本地 archive/ 目录但不提交
 archive/
 archive.zip
 
