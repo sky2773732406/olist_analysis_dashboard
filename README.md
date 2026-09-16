@@ -92,24 +92,22 @@ olist-data-analysis/
 
 建立关系：
 
-- orders[order_id] → order_items[order_id]
-- orders[order_id] → payments[order_id]
-- orders[order_id] → reviews[order_id]
+- order_items[order_id] → orders[order_id]（多对一）
+- order_payments[order_id] → orders[order_id]
+- order_reviews[order_id] → orders[order_id]
 - orders[customer_id] → customers[customer_id]
 - order_items[product_id] → products[product_id]
-- products[product_category_name] → translation[product_category_name]
+- order_items[seller_id] → sellers[seller_id]
+- products[product_category_name] → product_category_translation[product_category_name]
+- Date[Date] → orders[order_date]
 
 创建日期表，编写 DAX：
 
-- Total GMV
-- Total Orders
-- AOV
-- MoM%
-- YoY%
-- Avg Delivery Days
-- Bad Review Rate
-- Repeat Users
-- Repeat Rate
+- Total GMV、Total Orders、Total Items、AOV
+- MoM%、Cumulative GMV
+- Total Customers、Repeat Customers、Repeat Rate
+- Avg Delivery Days、Avg Review Score、Bad Review Rate
+- Credit Card Share、Total Payment、Payment Orders
 
 仪表板页面：
 

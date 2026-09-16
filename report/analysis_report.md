@@ -84,7 +84,7 @@
 | `excel/olist_cleaning_pivot.xlsx` | 清洗宽表 + 4 张数据透视表 |
 | `sql/olist_analysis.sql` | MySQL 建表、导入与 15 条分析查询 |
 | `powerbi/olist_dashboard.pbix` | 星型模型 + DAX + 6 页交互式仪表板 |
-| `powerbi/olist_dashboard.pdf` | 仪表板导出（PDF） |
+| `images/olist_dashboard.pdf` | 仪表板导出（PDF） |
 | `images/dashboard.png` | 仪表板总览截图 |
 
 **复现步骤**：原始 CSV 放入 `archive/`（大文件不提交）→ 按 `excel/` 完成清洗与透视 → 按 `sql/` 建库导入并运行分析 → 用 `powerbi/` 建模与可视化。
