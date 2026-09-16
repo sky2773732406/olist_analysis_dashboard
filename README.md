@@ -19,7 +19,7 @@
 
 ## 技术栈
 
-- Excel：数据清洗、VLOOKUP/XLOOKUP、数据透视表
+- Excel：Power Query 清洗与合并、数据透视表
 - SQL：MySQL 8.0，JOIN、GROUP BY、CTE、窗口函数
 - Power BI：数据建模、DAX、交互式仪表板
 - Git：版本管理，提交信息只描述项目动作
@@ -61,7 +61,7 @@ olist-data-analysis/
 ### 2. Excel 清洗与透视
 
 - 清洗 orders、order_items、customers、products、translation。
-- 用 VLOOKUP/XLOOKUP 合并订单、客户、产品、品类。
+- 用 Power Query 合并订单、客户、产品、品类（以订单明细为主表，链式关联）。
 - 新增 `item_total = price + freight_value`。
 - 新增 `delivery_days = order_delivered_customer_date - order_purchase_timestamp`。
 - 建立数据透视表：
